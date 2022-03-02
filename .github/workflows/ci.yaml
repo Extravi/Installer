@@ -1,0 +1,54 @@
+name: ci
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+    
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    
+    - name: Download TaskbarProgress
+      uses: carlosperate/download-file-action@v1.0.3
+      with:
+        file-url: https://nsis.sourceforge.io/mediawiki/images/6/6f/Win7TaskbarProgress_20091109.zip
+    - name: Extract TaskbarProgress
+      run: 7z x -o"${{ github.workspace }}/NSIS_Plugins/Plugins/x86-unicode" "${{ github.workspace }}/Win7TaskbarProgress_20091109.zip"
+   
+    - name: Download NSCurl
+      uses: carlosperate/download-file-action@v1.0.3
+      with:
+        file-url: https://github.com/negrutiu/nsis-nscurl/releases/download/v1.2021.6.12/NScurl-1.2021.6.12.7z
+    - name: Extract NSCurl
+      run: |
+        7z x -o"${{ github.workspace }}/NSIS_Plugins/Plugins" "${{ github.workspace }}/NScurl-1.2021.6.12.7z"
+
+    - name: Download nsisunz
+      uses: carlosperate/download-file-action@v1.0.3
+      with:
+        file-url: https://github.com/past-due/nsisunz/files/6176644/nsisunz.zip
+    - name: Extract nsisunz
+      run: 7z x -o"${{ github.workspace }}/NSIS_Plugins/Plugins" "${{ github.workspace }}/nsisunz.zip"
+   
+    - name: Download MoveFileFolder.nsh
+      uses: carlosperate/download-file-action@v1.0.3
+      with:
+        file-url: https://gist.github.com/sitiom/0aa6bca2c5a66fa2846852225b9d31f1/raw/6c4131075226a65c48798ed562a4971e636fc806/MoveFileFolder.nsh
+
+    - name: Build installer
+      uses: joncloud/makensis-action@v3.4
+      with:
+        script-file: installer.nsi
+        arguments: "/V3"
+        additional-plugin-paths: ${{ github.workspace }}/NSIS_Plugins/Plugins
+    
+    - name: Upload artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: "Setup"
+        path: "Setup - Extravi's ReShade-Preset.exe"
