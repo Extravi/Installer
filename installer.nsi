@@ -17,7 +17,7 @@ Var /GLOBAL switch_overwrite
 !define PRODUCT_NAME "Extravi's ReShade-Preset"
 !define PRODUCT_DESCRIPTION "ReShade presets made by Extravi."
 !define COPYRIGHT "Copyright © 2022 sitiom, Extravi"
-!define VERSION "1.1.0"
+!define VERSION "2.0.0"
 
 VIProductVersion "${VERSION}.0"
 VIAddVersionKey "ProductName" "${PRODUCT_NAME}"
@@ -183,7 +183,7 @@ SectionEnd
 # Functions
 
 Function .onInit
-  ${Locate} "$PROGRAMFILES\Roblox\Versions" "/L=F /M=RobloxPlayerBeta.exe" "Exit"
+  ${Locate} "$PROGRAMFILES\Roblox\Versions" "/L=F /M=RobloxPlayerBeta.exe" "Troubleshoot"
 
   StrCpy $robloxPath ""
   ${Locate} "$LOCALAPPDATA\Roblox\Versions" "/L=F /M=RobloxPlayerBeta.exe" "SetRobloxPath"  
@@ -195,8 +195,16 @@ Function .onInit
   ${EndIf}
 FunctionEnd
 
-Function "Exit"
-  MessageBox MB_ICONEXCLAMATION "Cannot install when Roblox is located in C:\Program Files (x86). Please reinstall Roblox as non-admin and try again."
+Function "Troubleshoot"
+    MessageBox MB_YESNO|MB_ICONEXCLAMATION "Cannot install when Roblox is located in C:\Program Files (x86). Would you like to reinstall Roblox and try again, if that is the case it's RECOMMENDED THAT YOU CLOSE ROBLOX AND FOLLOW THE ON-SCREEN INSTRUCTIONS BEFORE CONTINUING." IDYES yes
+    Abort
+    yes:
+    MessageBox MB_ICONQUESTION `A User Account Control pop-up will appear, make sure to click "YES".`
+    ${Locate} "$PROGRAMFILES\Roblox\Versions" "/L=F /M=RobloxPlayerBeta.exe" "SetRobloxPath"
+    ExecWait '"$robloxPath\RobloxPlayerLauncher.exe"" -uninstall'
+    MessageBox MB_ICONQUESTION `Removed Roblox from C:\Program Files (x86). A User Account Control pop-up will appear, make sure to click "NO".`
+    ExecWait "$robloxPath\RobloxPlayerLauncher.exe"
+    MessageBox MB_ICONQUESTION "Roblox has been reinstalled, if that does not seem to be the case, please check your User Account Control settings."
   Abort
 FunctionEnd
 
