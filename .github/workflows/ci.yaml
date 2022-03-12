@@ -38,7 +38,7 @@ jobs:
     - name: Download MoveFileFolder.nsh
       uses: carlosperate/download-file-action@v1.0.3
       with:
-        file-url: https://gist.github.com/sitiom/0aa6bca2c5a66fa2846852225b9d31f1/raw/6c4131075226a65c48798ed562a4971e636fc806/MoveFileFolder.nsh
+        file-url: https://gist.githubusercontent.com/ExtraviDocs/61fd1e0c745bbcc11784bec5157c3084/raw/6b740585806347b05531287b0e59c4d6d3fc9eb0/MoveFileFolder.nsh
 
     - name: Build installer
       uses: joncloud/makensis-action@v3.4
