@@ -196,7 +196,7 @@ Function .onInit
 FunctionEnd
 
 Function "Troubleshoot"
-    MessageBox MB_YESNO|MB_ICONEXCLAMATION "Cannot install when Roblox is located in C:\Program Files (x86). Would you like to reinstall Roblox and try again, if that is the case it's RECOMMENDED THAT YOU CLOSE ROBLOX AND FOLLOW THE ON-SCREEN INSTRUCTIONS BEFORE CONTINUING." IDYES yes
+    MessageBox MB_YESNO|MB_ICONEXCLAMATION "It seems like Roblox is installed system-wide in the Program Files directory. Would you like to attempt to install again under your own user? Make sure you follow all on-screen instructions, and ensure that Roblox is closed before proceeding." IDYES yes
     Abort
     yes:
     MessageBox MB_ICONQUESTION `A User Account Control pop-up will appear, make sure to click "YES".`
