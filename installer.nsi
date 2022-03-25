@@ -54,9 +54,9 @@ InstType "Full";1
 !define MUI_WELCOMEFINISHPAGE_BITMAP "extravi-reshade.bmp"
 !define MUI_WELCOMEPAGE_TEXT "This will install ${PRODUCT_NAME} on your computer.$\r$\n\
 $\r$\n\
-It is recommended that you close Roblox before continuing.$\r$\n\
+Before continuing, ensure that Roblox is closed.$\r$\n\
 $\r$\n\
-Problems with the set up may occur. In which case, it is advised you join Extravi's Discord server for your questions.$\r$\n\
+There may be issues with the setup. If that's the case, it's recommended that you ask your questions on Extravi's Discord server.$\r$\n\
 $\r$\n\
 Click Next to continue."
 !define MUI_LICENSEPAGE_RADIOBUTTONS
