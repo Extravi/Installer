@@ -226,5 +226,5 @@ Function "StartTaskbarProgress"
 FunctionEnd
 
 Function "OpenLink"
-  ExecShell "open" "https://extravidocs.github.io/"
+  ExecShell "open" "https://extravi.github.io/"
 FunctionEnd
