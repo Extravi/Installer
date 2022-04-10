@@ -147,12 +147,12 @@ SectionEnd
 SectionGroup /e "Presets"
   Section "Extravi's ReShade-Presets"
     SectionIn 1
-    File "Extravi's ReShade-Preset\Extravi's ReShade-Preset Added Bloom Blurred SSR.ini"
-    File "Extravi's ReShade-Preset\Extravi's ReShade-Preset Added Bloom Glossy.ini"
-    File "Extravi's ReShade-Preset\Extravi's ReShade-Preset Added Bloom.ini"
-    File "Extravi's ReShade-Preset\Extravi's ReShade-Preset No Added Bloom Blurred SSR.ini"
-    File "Extravi's ReShade-Preset\Extravi's ReShade-Preset No Added Bloom Glossy.ini"
-    File "Extravi's ReShade-Preset\Extravi's ReShade-Preset No Added Bloom.ini"
+    File "Extravi's ReShade-Preset\Extravi's ReShade-Preset Low.ini"
+    File "Extravi's ReShade-Preset\Extravi's ReShade-Preset Low-Blurred SSR.ini"
+    File "Extravi's ReShade-Preset\Extravi's ReShade-Preset Low-Glossy.ini"
+    File "Extravi's ReShade-Preset\Extravi's ReShade-Preset Ultra.ini"
+    File "Extravi's ReShade-Preset\Extravi's ReShade-Preset Ultra-Blurred SSR.ini"
+    File "Extravi's ReShade-Preset\Extravi's ReShade-Preset Ultra-Glossy.ini"
   SectionEnd
 SectionGroupEnd
 
@@ -164,12 +164,12 @@ Section "uninstall"
 
   DeleteRegKey HKCU "Software\Microsoft\Windows\CurrentVersion\Uninstall\extravi-reshade-presets"
 
-  Delete "$robloxPath\Extravi's ReShade-Preset Added Bloom Blurred SSR.ini"
-  Delete "$robloxPath\Extravi's ReShade-Preset Added Bloom Glossy.ini"
-  Delete "$robloxPath\Extravi's ReShade-Preset Added Bloom.ini"
-  Delete "$robloxPath\Extravi's ReShade-Preset No Added Bloom Blurred SSR.ini"
-  Delete "$robloxPath\Extravi's ReShade-Preset No Added Bloom Glossy.ini"
-  Delete "$robloxPath\Extravi's ReShade-Preset No Added Bloom.ini"
+  Delete "$robloxPath\Extravi's ReShade-Preset Low.ini"
+  Delete "$robloxPath\Extravi's ReShade-Preset Low-Blurred SSR.ini"
+  Delete "$robloxPath\Extravi's ReShade-Preset Low-Glossy.ini"
+  Delete "$robloxPath\Extravi's ReShade-Preset Ultra.ini"
+  Delete "$robloxPath\Extravi's ReShade-Preset Ultra-Blurred SSR.ini"
+  Delete "$robloxPath\Extravi's ReShade-Preset Ultra-Glossy.ini"
   Delete "$robloxPath\ReShade.ini"
   Delete "$robloxPath\ReShadePreset.ini"
   RMDir /r "$robloxPath\reshade-shaders"
