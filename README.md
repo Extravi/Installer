@@ -1,4 +1,4 @@
-# Installer [![ci](https://github.com/ExtraviDocs/Installer/actions/workflows/ci.yaml/badge.svg)](https://github.com/ExtraviDocs/Installer/actions/workflows/ci.yaml)
+# Installer [![ci](https://github.com/Extravi/Installer/actions/workflows/ci.yaml/badge.svg)](https://github.com/Extravi/Installer/actions/workflows/ci.yaml)
 
 The installer for Extravi ReShade Presets.
 
