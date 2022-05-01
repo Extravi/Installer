@@ -112,7 +112,7 @@ Section "ReShade (required)"
   nsisunz::Unzip "AstrayFX-master.zip" "$INSTDIR"
   Delete "AstrayFX-master.zip"
 
-  NSCurl::http GET "https://github.com/BlueSkyDefender/AstrayFX/archive/refs/heads/master.zip" "Depth3D-master.zip" /END
+  NSCurl::http GET "https://github.com/BlueSkyDefender/Depth3D/archive/refs/heads/master.zip" "Depth3D-master.zip" /END
   nsisunz::Unzip "Depth3D-master.zip" "$INSTDIR"
   Delete "Depth3D-master.zip"
 
