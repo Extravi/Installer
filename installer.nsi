@@ -17,7 +17,7 @@ Var /GLOBAL switch_overwrite
 !define PRODUCT_NAME "Extravi's ReShade-Preset"
 !define PRODUCT_DESCRIPTION "ReShade presets made by Extravi."
 !define COPYRIGHT "Copyright © 2022 sitiom, Extravi"
-!define VERSION "2.0.0"
+!define VERSION "2.1.0"
 
 VIProductVersion "${VERSION}.0"
 VIAddVersionKey "ProductName" "${PRODUCT_NAME}"
@@ -130,11 +130,12 @@ Section "ReShade (required)"
 
   StrCpy $switch_overwrite 1 $INSTDIR
 
-  !insertmacro MoveFolder "$INSTDIR\AstrayFX-master\Shaders" "$robloxPath\reshade-shaders\Shaders" "*"
+  !insertmacro MoveFolder "$INSTDIR\AstrayFX-master\Shaders" "$robloxPath\reshade-shaders\Shaders\AstrayFX" "*"
   !insertmacro MoveFolder "$INSTDIR\AstrayFX-master\Textures" "$robloxPath\reshade-shaders\Textures" "*"
   RMDir /r "$INSTDIR\AstrayFX-master"
+  Delete "$robloxPath\reshade-shaders\Shaders\AstrayFX\Clarity.fx"
 
-  !insertmacro MoveFolder "$INSTDIR\Depth3D-master\Shaders" "$robloxPath\reshade-shaders\Shaders" "*"
+  !insertmacro MoveFolder "$INSTDIR\Depth3D-master\Shaders" "$robloxPath\reshade-shaders\Shaders\Depth3D" "*"
   !insertmacro MoveFolder "$INSTDIR\Depth3D-master\Textures" "$robloxPath\reshade-shaders\Textures" "*"
   RMDir /r "$INSTDIR\Depth3D-master"
 
@@ -155,20 +156,21 @@ Section "ReShade (required)"
   File "Extravi's ReShade-Preset\ReShade.log"
   File "Extravi's ReShade-Preset\ReShade.ini"
   File "Extravi's ReShade-Preset\NunitoSans-Regular.ttf"
+  File "Extravi's ReShade-Preset\Hack-Regular.ttf"
   File "Extravi's ReShade-Preset\ClientSettings.zip"
   nsisunz::Unzip "$robloxPath\ClientSettings.zip" "$robloxPath"
   Delete "$robloxPath\ClientSettings.zip"
+  File "Extravi's ReShade-Preset\reshade-config.zip"
+  nsisunz::Unzip "$robloxPath\reshade-config.zip" "$robloxPath"
+  Delete "$robloxPath\reshade-config.zip"
 SectionEnd
 
 SectionGroup /e "Presets"
   Section "Extravi's ReShade-Presets"
     SectionIn 1
-    File "Extravi's ReShade-Preset\Extravi's ReShade-Preset Low.ini"
-    File "Extravi's ReShade-Preset\Extravi's ReShade-Preset Low-Blurred SSR.ini"
-    File "Extravi's ReShade-Preset\Extravi's ReShade-Preset Low-Glossy.ini"
-    File "Extravi's ReShade-Preset\Extravi's ReShade-Preset Ultra.ini"
-    File "Extravi's ReShade-Preset\Extravi's ReShade-Preset Ultra-Blurred SSR.ini"
-    File "Extravi's ReShade-Preset\Extravi's ReShade-Preset Ultra-Glossy.ini"
+    File "Extravi's ReShade-Preset\reshade-presets.zip"
+    nsisunz::Unzip "$robloxPath\reshade-presets.zip" "$robloxPath"
+    Delete "$robloxPath\reshade-presets.zip"
   SectionEnd
 SectionGroupEnd
 
@@ -180,12 +182,7 @@ Section "uninstall"
 
   DeleteRegKey HKCU "Software\Microsoft\Windows\CurrentVersion\Uninstall\extravi-reshade-presets"
 
-  Delete "$robloxPath\Extravi's ReShade-Preset Low.ini"
-  Delete "$robloxPath\Extravi's ReShade-Preset Low-Blurred SSR.ini"
-  Delete "$robloxPath\Extravi's ReShade-Preset Low-Glossy.ini"
-  Delete "$robloxPath\Extravi's ReShade-Preset Ultra.ini"
-  Delete "$robloxPath\Extravi's ReShade-Preset Ultra-Blurred SSR.ini"
-  Delete "$robloxPath\Extravi's ReShade-Preset Ultra-Glossy.ini"
+  RMDir /r "$robloxPath\reshade-presets"
   Delete "$robloxPath\ReShade.ini"
   Delete "$robloxPath\ReShadePreset.ini"
   RMDir /r "$robloxPath\reshade-shaders"
@@ -193,6 +190,7 @@ Section "uninstall"
   Delete "$robloxPath\dxgi.dll"
   Delete "$robloxPath\ReShade.log"
   Delete "$robloxPath\NunitoSans-Regular.ttf"
+  Delete "$robloxPath\Hack-Regular.ttf"
 SectionEnd
 
 ####################################################################
