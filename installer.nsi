@@ -174,6 +174,18 @@ SectionGroup /e "Presets"
   SectionEnd
 SectionGroupEnd
 
+SectionGroup /e "rbxfpsunlocker"
+  Section "rbxfpsunlocker"
+   SectionIn 1
+   ExecWait "TaskKill /IM rbxfpsunlocker.exe /F"
+   NSCurl::http GET "https://github.com/axstin/rbxfpsunlocker/releases/download/v4.4.2/rbxfpsunlocker-x64.zip" "rbxfpsunlocker-x64.zip" /END
+   nsisunz::Unzip "rbxfpsunlocker-x64.zip" "$INSTDIR"
+   Delete "rbxfpsunlocker-x64.zip"
+   CopyFiles "$INSTDIR\rbxfpsunlocker.exe" "$APPDATA\Microsoft\Windows\Start Menu\Programs\Startup"
+   Exec "$APPDATA\Microsoft\Windows\Start Menu\Programs\Startup\rbxfpsunlocker.exe"
+  SectionEnd
+SectionGroupEnd
+
 Section "uninstall"
   ${Locate} "$LOCALAPPDATA\Roblox\Versions" "/L=F /M=RobloxPlayerBeta.exe" "un.SetRobloxPath"
 
