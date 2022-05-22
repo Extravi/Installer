@@ -17,7 +17,7 @@ Var /GLOBAL switch_overwrite
 !define PRODUCT_NAME "Extravi's ReShade-Preset"
 !define PRODUCT_DESCRIPTION "ReShade presets made by Extravi."
 !define COPYRIGHT "Copyright © 2022 sitiom, Extravi"
-!define VERSION "2.1.0"
+!define VERSION "2.2.0"
 
 VIProductVersion "${VERSION}.0"
 VIAddVersionKey "ProductName" "${PRODUCT_NAME}"
@@ -54,7 +54,7 @@ InstType "Full";1
 !define MUI_WELCOMEFINISHPAGE_BITMAP "extravi-reshade.bmp"
 !define MUI_WELCOMEPAGE_TEXT "This will install ${PRODUCT_NAME} on your computer.$\r$\n\
 $\r$\n\
-Before continuing, ensure that Roblox is closed.$\r$\n\
+Before continuing, ensure that Roblox is closed. If Roblox is open, the installer will terminate the process before it begins.$\r$\n\
 $\r$\n\
 There may be issues with the setup. If that's the case, it's recommended that you ask your questions on Extravi's Discord server.$\r$\n\
 $\r$\n\
@@ -94,6 +94,8 @@ Var robloxPath
 
 Section "ReShade (required)"
   SectionIn 1 RO
+
+  ExecWait "TaskKill /IM RobloxPlayerBeta.exe /F"
   
   SetOutPath $INSTDIR
 
