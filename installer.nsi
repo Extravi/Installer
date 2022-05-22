@@ -56,7 +56,7 @@ InstType "Full";1
 $\r$\n\
 Before continuing, ensure that Roblox is closed. If Roblox is open, the installer will terminate the process before it begins.$\r$\n\
 $\r$\n\
-There may be issues with the setup. If that's the case, it's recommended that you ask your questions on Extravi's Discord server.$\r$\n\
+There may be issues with the setup. If that's the case, it's recommended that you ask your questions in Extravi's Discord server.$\r$\n\
 $\r$\n\
 Click Next to continue."
 !define MUI_LICENSEPAGE_RADIOBUTTONS
