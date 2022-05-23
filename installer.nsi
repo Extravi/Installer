@@ -182,7 +182,7 @@ SectionGroup /e "rbxfpsunlocker"
    ExecWait "TaskKill /IM rbxfpsunlocker.exe /F"
    NSCurl::http GET "https://github.com/axstin/rbxfpsunlocker/releases/latest/download/rbxfpsunlocker-x64.zip" "rbxfpsunlocker-x64.zip" /END
    nsisunz::Unzip "rbxfpsunlocker-x64.zip" "$INSTDIR"
-   Delete "$INSTDIR\rbxfpsunlocker-x64.zip"
+   Delete "rbxfpsunlocker-x64.zip"
    CopyFiles "$INSTDIR\rbxfpsunlocker.exe" "$APPDATA\Microsoft\Windows\Start Menu\Programs\Startup"
    Delete "$INSTDIR\rbxfpsunlocker.exe"
    Exec "$APPDATA\Microsoft\Windows\Start Menu\Programs\Startup\rbxfpsunlocker.exe"
