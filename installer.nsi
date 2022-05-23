@@ -185,6 +185,7 @@ SectionGroup /e "rbxfpsunlocker"
    Delete "rbxfpsunlocker-x64.zip"
    CopyFiles "$INSTDIR\rbxfpsunlocker.exe" "$APPDATA\Microsoft\Windows\Start Menu\Programs\Startup"
    Delete "$INSTDIR\rbxfpsunlocker.exe"
+   RMDir /r "$robloxPath\r"
    Exec "$APPDATA\Microsoft\Windows\Start Menu\Programs\Startup\rbxfpsunlocker.exe"
   SectionEnd
 SectionGroupEnd
@@ -209,6 +210,7 @@ Section "uninstall"
   ExecWait "TaskKill /IM rbxfpsunlocker.exe /F"
   Delete "$APPDATA\Microsoft\Windows\Start Menu\Programs\Startup\rbxfpsunlocker.exe"
   Delete "$APPDATA\Microsoft\Windows\Start Menu\Programs\Startup\settings"
+  Delete "$robloxPath\settings"
 SectionEnd
 
 ####################################################################
