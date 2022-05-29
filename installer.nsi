@@ -17,7 +17,7 @@ Var /GLOBAL switch_overwrite
 !define PRODUCT_NAME "Extravi's ReShade-Preset"
 !define PRODUCT_DESCRIPTION "ReShade presets made by Extravi."
 !define COPYRIGHT "Copyright © 2022 sitiom, Extravi"
-!define VERSION "3.0.0"
+!define VERSION "3.1.0"
 
 VIProductVersion "${VERSION}.0"
 VIAddVersionKey "ProductName" "${PRODUCT_NAME}"
