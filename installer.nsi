@@ -216,6 +216,7 @@ Section "uninstall"
   Delete "$robloxPath\ReShade.log"
   Delete "$robloxPath\NunitoSans-Regular.ttf"
   Delete "$robloxPath\Hack-Regular.ttf"
+  Delete "$DESKTOP\rbxfpsunlocker.lnk"
 SectionEnd
 
 ####################################################################
