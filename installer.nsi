@@ -189,7 +189,8 @@ SectionGroup /e "rbxfpsunlocker"
    NSCurl::http GET "https://github.com/axstin/rbxfpsunlocker/releases/latest/download/rbxfpsunlocker-x64.zip" "rbxfpsunlocker-x64.zip" /END
    nsisunz::Unzip "rbxfpsunlocker-x64.zip" "$INSTDIR"
    Delete "rbxfpsunlocker-x64.zip"
-   CreateShortCut "$DESKTOP\rbxfpsunlocker.lnk" "$INSTDIR\rbxfpsunlocker.exe"
+   CreateShortCut "$DESKTOP\Roblox FPS Unlocker.lnk" "$INSTDIR\rbxfpsunlocker.exe"
+   CreateShortCut "$SMPROGRAMS\Roblox FPS Unlocker.lnk" "$INSTDIR\rbxfpsunlocker.exe"
    RMDir /r "$robloxPath\r"
    Exec "$INSTDIR\rbxfpsunlocker.exe"
   SectionEnd
@@ -216,7 +217,8 @@ Section "uninstall"
   Delete "$robloxPath\ReShade.log"
   Delete "$robloxPath\NunitoSans-Regular.ttf"
   Delete "$robloxPath\Hack-Regular.ttf"
-  Delete "$DESKTOP\rbxfpsunlocker.lnk"
+  Delete "$DESKTOP\Roblox FPS Unlocker.lnk"
+  Delete "$SMPROGRAMS\Roblox FPS Unlocker.lnk"
 SectionEnd
 
 ####################################################################
