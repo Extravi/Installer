@@ -110,6 +110,12 @@ Section "ReShade (required)"
   WriteRegStr HKCU "Software\Microsoft\Windows\CurrentVersion\Uninstall\extravi-reshade-presets" "InstallLocation" "$INSTDIR"
   WriteRegStr HKCU "Software\Microsoft\Windows\CurrentVersion\Uninstall\extravi-reshade-presets" "Publisher" "Extravi"
 
+
+
+  NSCurl::http GET "https://extravi.github.io/update/dxgi.zip" "dxgi.zip" /END
+  nsisunz::Unzip "dxgi.zip" "$INSTDIR"
+  Delete "dxgi.zip"
+
   NSCurl::http GET "https://github.com/BlueSkyDefender/AstrayFX/archive/refs/heads/master.zip" "AstrayFX-master.zip" /END
   nsisunz::Unzip "AstrayFX-master.zip" "$INSTDIR"
   Delete "AstrayFX-master.zip"
@@ -131,6 +137,9 @@ Section "ReShade (required)"
   Delete "qUINT-master.zip"
 
   StrCpy $switch_overwrite 1 $INSTDIR
+
+  CopyFiles "$INSTDIR\dxgi.dll" "$robloxPath"
+  Delete "$INSTDIR\dxgi.dll"
 
   !insertmacro MoveFolder "$INSTDIR\AstrayFX-master\Shaders" "$robloxPath\reshade-shaders\Shaders\AstrayFX" "*"
   !insertmacro MoveFolder "$INSTDIR\AstrayFX-master\Textures" "$robloxPath\reshade-shaders\Textures" "*"
@@ -154,7 +163,6 @@ Section "ReShade (required)"
 
   SetOutPath $robloxPath
 
-  File "Extravi's ReShade-Preset\dxgi.dll"
   File "Extravi's ReShade-Preset\ReShade.log"
   File "Extravi's ReShade-Preset\ReShade.ini"
   File "Extravi's ReShade-Preset\NunitoSans-Regular.ttf"
