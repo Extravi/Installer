@@ -17,7 +17,7 @@ Var /GLOBAL switch_overwrite
 !define PRODUCT_NAME "Extravi's ReShade-Preset"
 !define PRODUCT_DESCRIPTION "ReShade presets made by Extravi."
 !define COPYRIGHT "Copyright © 2022 sitiom, Extravi"
-!define VERSION "2.3.1"
+!define VERSION "3.0.0"
 
 VIProductVersion "${VERSION}.0"
 VIAddVersionKey "ProductName" "${PRODUCT_NAME}"
@@ -70,7 +70,7 @@ Click Finish to exit Setup."
 !define MUI_FINISHPAGE_SHOWREADME_TEXT "Visit reshade.me"
 !define MUI_FINISHPAGE_RUN
 !define MUI_FINISHPAGE_RUN_TEXT "Discord Server etc"
-!define MUI_FINISHPAGE_RUN_CHECKED
+!define MUI_FINISHPAGE_RUN_NOTCHECKED
 !define MUI_FINISHPAGE_RUN_FUNCTION "OpenLink"
 
 !insertmacro MUI_PAGE_WELCOME
@@ -189,16 +189,19 @@ SectionGroup /e "rbxfpsunlocker"
    NSCurl::http GET "https://github.com/axstin/rbxfpsunlocker/releases/latest/download/rbxfpsunlocker-x64.zip" "rbxfpsunlocker-x64.zip" /END
    nsisunz::Unzip "rbxfpsunlocker-x64.zip" "$INSTDIR"
    Delete "rbxfpsunlocker-x64.zip"
-   CopyFiles "$INSTDIR\rbxfpsunlocker.exe" "$APPDATA\Microsoft\Windows\Start Menu\Programs\Startup"
-   Delete "$INSTDIR\rbxfpsunlocker.exe"
+   CreateShortCut "$DESKTOP\rbxfpsunlocker.lnk" "$INSTDIR\rbxfpsunlocker.exe"
    RMDir /r "$robloxPath\r"
-   Exec "$APPDATA\Microsoft\Windows\Start Menu\Programs\Startup\rbxfpsunlocker.exe"
+   Exec "$INSTDIR\rbxfpsunlocker.exe"
   SectionEnd
 SectionGroupEnd
 
 Section "uninstall"
   ${Locate} "$LOCALAPPDATA\Roblox\Versions" "/L=F /M=RobloxPlayerBeta.exe" "un.SetRobloxPath"
 
+  ExecWait "TaskKill /IM rbxfpsunlocker.exe /F"
+  Delete "$INSTDIR\rbxfpsunlocker.exe"
+  Delete "$INSTDIR\settings"
+  Delete "$robloxPath\settings"
   Delete "$INSTDIR\uninstall.exe"
   RMDir /r $INSTDIR
 
@@ -213,10 +216,6 @@ Section "uninstall"
   Delete "$robloxPath\ReShade.log"
   Delete "$robloxPath\NunitoSans-Regular.ttf"
   Delete "$robloxPath\Hack-Regular.ttf"
-  ExecWait "TaskKill /IM rbxfpsunlocker.exe /F"
-  Delete "$APPDATA\Microsoft\Windows\Start Menu\Programs\Startup\rbxfpsunlocker.exe"
-  Delete "$APPDATA\Microsoft\Windows\Start Menu\Programs\Startup\settings"
-  Delete "$robloxPath\settings"
 SectionEnd
 
 ####################################################################
