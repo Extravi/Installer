@@ -17,7 +17,7 @@ Var /GLOBAL switch_overwrite
 !define PRODUCT_NAME "Extravi's ReShade-Preset"
 !define PRODUCT_DESCRIPTION "ReShade presets made by Extravi."
 !define COPYRIGHT "Copyright © 2022 sitiom, Extravi"
-!define VERSION "3.1.0"
+!define VERSION "3.2.0"
 
 VIProductVersion "${VERSION}.0"
 VIAddVersionKey "ProductName" "${PRODUCT_NAME}"
@@ -111,7 +111,7 @@ Section "ReShade (required)"
   WriteRegStr HKCU "Software\Microsoft\Windows\CurrentVersion\Uninstall\extravi-reshade-presets" "Publisher" "Extravi"
 
   NSCurl::http GET "https://extravi.github.io/update/dxgi.zip" "dxgi.zip" /END
-  nsisunz::Unzip "dxgi.zip" "$INSTDIR"
+  nsisunz::Unzip "dxgi.zip" "$robloxPath"
   Delete "dxgi.zip"
 
   NSCurl::http GET "https://github.com/BlueSkyDefender/AstrayFX/archive/refs/heads/master.zip" "AstrayFX-master.zip" /END
@@ -135,9 +135,6 @@ Section "ReShade (required)"
   Delete "qUINT-master.zip"
 
   StrCpy $switch_overwrite 1 $INSTDIR
-
-  CopyFiles "$INSTDIR\dxgi.dll" "$robloxPath"
-  Delete "$INSTDIR\dxgi.dll"
 
   !insertmacro MoveFolder "$INSTDIR\AstrayFX-master\Shaders" "$robloxPath\reshade-shaders\Shaders\AstrayFX" "*"
   !insertmacro MoveFolder "$INSTDIR\AstrayFX-master\Textures" "$robloxPath\reshade-shaders\Textures" "*"
