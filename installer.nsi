@@ -17,7 +17,7 @@ Var /GLOBAL switch_overwrite
 !define PRODUCT_NAME "Extravi's ReShade-Preset"
 !define PRODUCT_DESCRIPTION "ReShade presets made by Extravi."
 !define COPYRIGHT "Copyright © 2022 sitiom, Extravi"
-!define VERSION "3.2.0"
+!define VERSION "4.0.0"
 
 VIProductVersion "${VERSION}.0"
 VIAddVersionKey "ProductName" "${PRODUCT_NAME}"
@@ -110,10 +110,6 @@ Section "ReShade (required)"
   WriteRegStr HKCU "Software\Microsoft\Windows\CurrentVersion\Uninstall\extravi-reshade-presets" "InstallLocation" "$INSTDIR"
   WriteRegStr HKCU "Software\Microsoft\Windows\CurrentVersion\Uninstall\extravi-reshade-presets" "Publisher" "Extravi"
 
-  NSCurl::http GET "https://extravi.github.io/update/dxgi.zip" "dxgi.zip" /END
-  nsisunz::Unzip "dxgi.zip" "$robloxPath"
-  Delete "dxgi.zip"
-
   NSCurl::http GET "https://github.com/BlueSkyDefender/AstrayFX/archive/refs/heads/master.zip" "AstrayFX-master.zip" /END
   nsisunz::Unzip "AstrayFX-master.zip" "$INSTDIR"
   Delete "AstrayFX-master.zip"
@@ -156,26 +152,23 @@ Section "ReShade (required)"
   !insertmacro MoveFolder "$INSTDIR\qUINT-master\Shaders" "$robloxPath\reshade-shaders\Shaders" "*"
   RMDir /r "$INSTDIR\qUINT-master"
 
-  SetOutPath $robloxPath
+  NSCurl::http GET "https://extravi.github.io/update/dxgi.zip" "dxgi.zip" /END
+  nsisunz::Unzip "dxgi.zip" "$robloxPath"
+  Delete "dxgi.zip"
 
-  File "Extravi's ReShade-Preset\ReShade.log"
-  File "Extravi's ReShade-Preset\ReShade.ini"
-  File "Extravi's ReShade-Preset\NunitoSans-Regular.ttf"
-  File "Extravi's ReShade-Preset\Hack-Regular.ttf"
-  File "Extravi's ReShade-Preset\ClientSettings.zip"
-  nsisunz::Unzip "$robloxPath\ClientSettings.zip" "$robloxPath"
-  Delete "$robloxPath\ClientSettings.zip"
-  File "Extravi's ReShade-Preset\reshade-config.zip"
-  nsisunz::Unzip "$robloxPath\reshade-config.zip" "$robloxPath"
-  Delete "$robloxPath\reshade-config.zip"
+  NSCurl::http GET "https://extravi.github.io/update/config.zip" "config.zip" /END
+  nsisunz::Unzip "config.zip" "$robloxPath"
+  Delete "config.zip"
+
+  SetOutPath $robloxPath
 SectionEnd
 
 SectionGroup /e "Presets"
   Section "Extravi's ReShade-Presets"
     SectionIn 1
-    File "Extravi's ReShade-Preset\reshade-presets.zip"
-    nsisunz::Unzip "$robloxPath\reshade-presets.zip" "$robloxPath"
-    Delete "$robloxPath\reshade-presets.zip"
+    NSCurl::http GET "https://extravi.github.io/update/reshade-presets.zip" "reshade-presets.zip" /END
+    nsisunz::Unzip "reshade-presets.zip" "$robloxPath"
+    Delete "reshade-presets.zip"
   SectionEnd
 SectionGroupEnd
 
@@ -196,6 +189,7 @@ SectionGroupEnd
 Section "uninstall"
   ${Locate} "$LOCALAPPDATA\Roblox\Versions" "/L=F /M=RobloxPlayerBeta.exe" "un.SetRobloxPath"
 
+  ExecWait "TaskKill /IM RobloxPlayerBeta.exe /F"
   ExecWait "TaskKill /IM rbxfpsunlocker.exe /F"
   Delete "$INSTDIR\rbxfpsunlocker.exe"
   Delete "$INSTDIR\settings"
@@ -205,9 +199,8 @@ Section "uninstall"
 
   DeleteRegKey HKCU "Software\Microsoft\Windows\CurrentVersion\Uninstall\extravi-reshade-presets"
 
-  RMDir /r "$robloxPath\reshade-presets"
   Delete "$robloxPath\ReShade.ini"
-  Delete "$robloxPath\ReShadePreset.ini"
+  RMDir /r "$robloxPath\reshade-presets"
   RMDir /r "$robloxPath\reshade-shaders"
   RMDir /r "$robloxPath\ClientSettings"
   Delete "$robloxPath\dxgi.dll"
@@ -216,6 +209,7 @@ Section "uninstall"
   Delete "$robloxPath\Hack-Regular.ttf"
   Delete "$DESKTOP\Roblox FPS Unlocker.lnk"
   Delete "$SMPROGRAMS\Roblox FPS Unlocker.lnk"
+  Delete "$robloxPath\license.txt"
 SectionEnd
 
 ####################################################################
@@ -228,8 +222,13 @@ Function .onInit
   ${Locate} "$LOCALAPPDATA\Roblox\Versions" "/L=F /M=RobloxPlayerBeta.exe" "SetRobloxPath"  
   
   ${If} $robloxPath == ""
-    MessageBox MB_ICONEXCLAMATION "Roblox installation not found. Install Roblox on https://www.roblox.com/download/client and try again."
-    ExecShell open "https://www.roblox.com/download/client"
+    MessageBox MB_YESNO|MB_ICONEXCLAMATION "Roblox installation not found. Would you like to reinstall Roblox and try again?" IDYES yes
+    Abort
+    yes:
+    NScurl::http GET "https://www.roblox.com/download/client" "$INSTDIR\RobloxPlayerLauncher.exe" /POPUP /END
+    ExecWait "$INSTDIR\RobloxPlayerLauncher.exe"
+    MessageBox MB_ICONQUESTION "Roblox has been reinstalled, if that does not seem to be the case, please check your User Account Control settings."
+    RMDir /r $INSTDIR
     Abort
   ${EndIf}
 FunctionEnd
@@ -238,12 +237,15 @@ Function "Troubleshoot"
     MessageBox MB_YESNO|MB_ICONEXCLAMATION "It seems like Roblox is installed system-wide in the Program Files directory. Would you like to attempt to install again under your own user? Make sure you follow all on-screen instructions, and ensure that Roblox is closed before proceeding." IDYES yes
     Abort
     yes:
+    ExecWait "TaskKill /IM RobloxPlayerBeta.exe /F"
     MessageBox MB_ICONQUESTION `A User Account Control pop-up will appear, make sure to click "YES".`
     ${Locate} "$PROGRAMFILES\Roblox\Versions" "/L=F /M=RobloxPlayerBeta.exe" "SetRobloxPath"
     ExecWait '"$robloxPath\RobloxPlayerLauncher.exe"" -uninstall'
-    MessageBox MB_ICONQUESTION `Removed Roblox from C:\Program Files (x86). A User Account Control pop-up will appear, make sure to click "NO".`
-    ExecWait "$robloxPath\RobloxPlayerLauncher.exe"
+    MessageBox MB_ICONQUESTION "Roblox was removed from C:\Program Files (x86). Now will, attempt to reinstall Roblox."
+    NScurl::http GET "https://www.roblox.com/download/client" "$INSTDIR\RobloxPlayerLauncher.exe" /POPUP /END
+    ExecWait "$INSTDIR\RobloxPlayerLauncher.exe"
     MessageBox MB_ICONQUESTION "Roblox has been reinstalled, if that does not seem to be the case, please check your User Account Control settings."
+    RMDir /r $INSTDIR
   Abort
 FunctionEnd
 
