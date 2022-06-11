@@ -65,9 +65,9 @@ Click Next to continue."
 !define MUI_FINISHPAGE_TEXT "Setup has finished installing ${PRODUCT_NAME} on your computer. The effects will be applied the next time you launch Roblox.$\r$\n\
 $\r$\n\
 Click Finish to exit Setup."
-!define MUI_FINISHPAGE_SHOWREADME "https://reshade.me/"
-!define MUI_FINISHPAGE_SHOWREADME_NOTCHECKED
-!define MUI_FINISHPAGE_SHOWREADME_TEXT "Visit reshade.me"
+!define MUI_FINISHPAGE_SHOWREADME "https://www.youtube.com/channel/UCOZnRzWstxDLyW30TjWEevQ?sub_confirmation=1"
+!define MUI_FINISHPAGE_SHOWREADME_CHECKED
+!define MUI_FINISHPAGE_SHOWREADME_TEXT "Subscribe to Extravi on Youtube"
 !define MUI_FINISHPAGE_RUN
 !define MUI_FINISHPAGE_RUN_TEXT "Discord Server etc"
 !define MUI_FINISHPAGE_RUN_NOTCHECKED
