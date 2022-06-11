@@ -17,7 +17,7 @@ Var /GLOBAL switch_overwrite
 !define PRODUCT_NAME "Extravi's ReShade-Preset"
 !define PRODUCT_DESCRIPTION "ReShade presets made by Extravi."
 !define COPYRIGHT "Copyright © 2022 sitiom, Extravi"
-!define VERSION "4.0.0"
+!define VERSION "4.1.0"
 
 VIProductVersion "${VERSION}.0"
 VIAddVersionKey "ProductName" "${PRODUCT_NAME}"
@@ -131,6 +131,13 @@ Section "ReShade (required)"
   Delete "qUINT-master.zip"
 
   StrCpy $switch_overwrite 1 $INSTDIR
+
+  RMDir /r "$robloxPath\reshade-presets"
+  RMDir /r "$robloxPath\reshade-shaders"
+  RMDir /r "$robloxPath\ClientSettings"
+  Delete "$robloxPath\Reshade.ini"
+  Delete "$robloxPath\dxgi.dll"
+  Delete "$robloxPath\reshade.dll"
 
   !insertmacro MoveFolder "$INSTDIR\AstrayFX-master\Shaders" "$robloxPath\reshade-shaders\Shaders\AstrayFX" "*"
   !insertmacro MoveFolder "$INSTDIR\AstrayFX-master\Textures" "$robloxPath\reshade-shaders\Textures" "*"
