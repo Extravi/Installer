@@ -159,11 +159,11 @@ Section "ReShade (required)"
   !insertmacro MoveFolder "$INSTDIR\qUINT-master\Shaders" "$robloxPath\reshade-shaders\Shaders" "*"
   RMDir /r "$INSTDIR\qUINT-master"
 
-  NSCurl::http GET "https://extravi.github.io/update/dxgi.zip" "dxgi.zip" /END
+  NSCurl::http GET "https://github.com/Extravi/extravi.github.io/raw/main/update/dxgi.zip" "dxgi.zip" /END
   nsisunz::Unzip "dxgi.zip" "$robloxPath"
   Delete "dxgi.zip"
 
-  NSCurl::http GET "https://extravi.github.io/update/config.zip" "config.zip" /END
+  NSCurl::http GET "https://github.com/Extravi/extravi.github.io/raw/main/update/config.zip" "config.zip" /END
   nsisunz::Unzip "config.zip" "$robloxPath"
   Delete "config.zip"
 
@@ -173,7 +173,7 @@ SectionEnd
 SectionGroup /e "Presets"
   Section "Extravi's ReShade-Presets"
     SectionIn 1
-    NSCurl::http GET "https://extravi.github.io/update/reshade-presets.zip" "reshade-presets.zip" /END
+    NSCurl::http GET "https://github.com/Extravi/extravi.github.io/raw/main/update/reshade-presets.zip" "reshade-presets.zip" /END
     nsisunz::Unzip "reshade-presets.zip" "$robloxPath"
     Delete "reshade-presets.zip"
   SectionEnd
