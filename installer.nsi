@@ -139,6 +139,8 @@ Section "ReShade (required)"
   Delete "Glamarye_Fast_Effects_for_ReShade-main.zip"
 
   NSCurl::http GET "https://github.com/mj-ehsan/NiceGuy-Shaders/archive/refs/heads/main.zip" "NiceGuy-Shaders-main.zip" /END
+  nsisunz::Unzip "NiceGuy-Shaders-main.zip" "$INSTDIR"
+  Delete "NiceGuy-Shaders-main.zip"
 
   StrCpy $switch_overwrite 1 $INSTDIR
 
@@ -176,8 +178,8 @@ Section "ReShade (required)"
   !insertmacro MoveFolder "$INSTDIR\Glamarye_Fast_Effects_for_ReShade-main\Shaders" "$robloxPath\reshade-shaders\Shaders" "*"
   RMDir /r "$INSTDIR\Glamarye_Fast_Effects_for_ReShade-main"
 
-  nsisunz::Unzip "NiceGuy-Shaders-main.zip" "$robloxPath\reshade-shaders\Shaders"
-  Delete "NiceGuy-Shaders-main.zip"
+  !insertmacro MoveFolder "$INSTDIR\NiceGuy-Shaders-main" "$robloxPath\reshade-shaders\Shaders" "*"
+  RMDir /r "$INSTDIR\NiceGuy-Shaders-main"
 
   NSCurl::http GET "https://github.com/Extravi/extravi.github.io/raw/main/update/dxgi.zip" "dxgi.zip" /END
   nsisunz::Unzip "dxgi.zip" "$robloxPath"
