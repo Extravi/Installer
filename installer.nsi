@@ -6,6 +6,7 @@ Unicode true
 !include MUI2.nsh
 !include FileFunc.nsh
 !include LogicLib.nsh
+!include "Extravi's ReShade-Preset\InstallLocation.nsdinc"
 
 !insertmacro Locate
 Var /GLOBAL switch_overwrite
@@ -75,6 +76,7 @@ Click Finish to exit Setup."
 
 !insertmacro MUI_PAGE_WELCOME
 !insertmacro MUI_PAGE_LICENSE "Extravi's ReShade-Preset\license.txt"
+Page custom FNC_INSTALLLOCATION_SHOW
 !insertmacro MUI_PAGE_COMPONENTS
 !define MUI_PAGE_CUSTOMFUNCTION_SHOW "StartTaskbarProgress"
 !insertmacro MUI_PAGE_INSTFILES
