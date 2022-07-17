@@ -17,7 +17,7 @@ Var /GLOBAL switch_overwrite
 !define PRODUCT_NAME "Extravi's ReShade-Preset"
 !define PRODUCT_DESCRIPTION "ReShade presets made by Extravi."
 !define COPYRIGHT "Copyright © 2022 sitiom, Extravi"
-!define VERSION "4.1.1"
+!define VERSION "4.2.0"
 
 VIProductVersion "${VERSION}.0"
 VIAddVersionKey "ProductName" "${PRODUCT_NAME}"
@@ -130,6 +130,16 @@ Section "ReShade (required)"
   nsisunz::Unzip "qUINT-master.zip" "$INSTDIR"
   Delete "qUINT-master.zip"
 
+  NSCurl::http GET "https://github.com/AlucardDH/dh-reshade-shaders/archive/refs/heads/master.zip" "dh-reshade-shaders-master.zip" /END
+  nsisunz::Unzip "dh-reshade-shaders-master.zip" "$INSTDIR"
+  Delete "dh-reshade-shaders-master.zip"
+
+  NSCurl::http GET "https://github.com/rj200/Glamarye_Fast_Effects_for_ReShade/archive/refs/heads/main.zip" "Glamarye_Fast_Effects_for_ReShade-main.zip" /END
+  nsisunz::Unzip "Glamarye_Fast_Effects_for_ReShade-main.zip" "$INSTDIR"
+  Delete "Glamarye_Fast_Effects_for_ReShade-main.zip"
+
+  NSCurl::http GET "https://github.com/mj-ehsan/NiceGuy-Shaders/archive/refs/heads/main.zip" "NiceGuy-Shaders-main.zip" /END
+
   StrCpy $switch_overwrite 1 $INSTDIR
 
   RMDir /r "$robloxPath\reshade-presets"
@@ -158,6 +168,16 @@ Section "ReShade (required)"
 
   !insertmacro MoveFolder "$INSTDIR\qUINT-master\Shaders" "$robloxPath\reshade-shaders\Shaders" "*"
   RMDir /r "$INSTDIR\qUINT-master"
+
+  !insertmacro MoveFolder "$INSTDIR\dh-reshade-shaders-master\Shaders" "$robloxPath\reshade-shaders\Shaders" "*"
+  !insertmacro MoveFolder "$INSTDIR\dh-reshade-shaders-master\Textures" "$robloxPath\reshade-shaders\Textures" "*"
+  RMDir /r "$INSTDIR\dh-reshade-shaders-master"
+
+  !insertmacro MoveFolder "$INSTDIR\Glamarye_Fast_Effects_for_ReShade-main\Shaders" "$robloxPath\reshade-shaders\Shaders" "*"
+  RMDir /r "$INSTDIR\Glamarye_Fast_Effects_for_ReShade-main"
+
+  nsisunz::Unzip "NiceGuy-Shaders-main.zip" "$robloxPath\reshade-shaders\Shaders"
+  Delete "NiceGuy-Shaders-main.zip"
 
   NSCurl::http GET "https://github.com/Extravi/extravi.github.io/raw/main/update/dxgi.zip" "dxgi.zip" /END
   nsisunz::Unzip "dxgi.zip" "$robloxPath"
