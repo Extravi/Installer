@@ -142,10 +142,6 @@ Section "ReShade (required)"
   nsisunz::Unzip "NiceGuy-Shaders-main.zip" "$INSTDIR"
   Delete "NiceGuy-Shaders-main.zip"
 
-  NSCurl::http GET "https://github.com/JakobPCoder/ReshadeMotionEstimation/archive/refs/heads/main.zip" "ReshadeMotionEstimation-main.zip" /END
-  nsisunz::Unzip "ReshadeMotionEstimation-main.zip" "$INSTDIR"
-  Delete "ReshadeMotionEstimation-main.zip"
-
   StrCpy $switch_overwrite 1 $INSTDIR
 
   RMDir /r "$robloxPath\reshade-presets"
@@ -186,9 +182,6 @@ Section "ReShade (required)"
 
   !insertmacro MoveFolder "$INSTDIR\NiceGuy-Shaders-main" "$robloxPath\reshade-shaders\Shaders" "*"
   RMDir /r "$INSTDIR\NiceGuy-Shaders-main"
-
-  !insertmacro MoveFolder "$INSTDIR\ReshadeMotionEstimation-main" "$robloxPath\reshade-shaders\Shaders" "*"
-  RMDir /r "$INSTDIR\ReshadeMotionEstimation-main"
 
   NSCurl::http GET "https://github.com/Extravi/extravi.github.io/raw/main/update/dxgi.zip" "dxgi.zip" /END
   nsisunz::Unzip "dxgi.zip" "$robloxPath"
