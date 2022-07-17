@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!--
+This file was created by NSISDialogDesigner 1.6.0.0
+https://coolsoft.altervista.org/nsisdialogdesigner
+Do not edit manually!
+-->
+<Dialog Name="InstallLocation" Title="Install Location" Subtitle="Please choose where you would like ReShade installed.">
+  <GroupBox Name="GroupBox" Location="0, 12" Size="322, 91" Text="Please choose the location where you want to install ReShade." TabIndex="0" ExStyle="WS_EX_CONTROLPARENT">
+    <RadioButton Name="RadioButton2" Location="10, 58" Size="200, 20" Text="Roblox Studio" TabIndex="0" />
+    <RadioButton Name="RadioButton1" Location="10, 32" Size="200, 20" Text="Roblox Player" Checked="True" TabIndex="1" />
+  </GroupBox>
+</Dialog>
