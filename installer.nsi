@@ -151,37 +151,37 @@ Section "ReShade (required)"
   Delete "$robloxPath\dxgi.dll"
   Delete "$robloxPath\reshade.dll"
 
-  !insertmacro MoveFolder "$INSTDIR\AstrayFX-master\Shaders" "$robloxPath\reshade-shaders\Shaders\AstrayFX" "*"
-  !insertmacro MoveFolder "$INSTDIR\AstrayFX-master\Textures" "$robloxPath\reshade-shaders\Textures" "*"
-  RMDir /r "$INSTDIR\AstrayFX-master"
+  !insertmacro MoveFolder "$INSTDIR\AstrayFX-f3f55f08c874ba4b01835cd4615e2b6f5b2459c5\Shaders" "$robloxPath\reshade-shaders\Shaders\AstrayFX" "*"
+  !insertmacro MoveFolder "$INSTDIR\AstrayFX-f3f55f08c874ba4b01835cd4615e2b6f5b2459c5\Textures" "$robloxPath\reshade-shaders\Textures" "*"
+  RMDir /r "$INSTDIR\AstrayFX-f3f55f08c874ba4b01835cd4615e2b6f5b2459c5"
   Delete "$robloxPath\reshade-shaders\Shaders\AstrayFX\Clarity.fx"
 
-  !insertmacro MoveFolder "$INSTDIR\Depth3D-master\Shaders" "$robloxPath\reshade-shaders\Shaders\Depth3D" "*"
-  !insertmacro MoveFolder "$INSTDIR\Depth3D-master\Textures" "$robloxPath\reshade-shaders\Textures" "*"
-  RMDir /r "$INSTDIR\Depth3D-master"
+  !insertmacro MoveFolder "$INSTDIR\Depth3D-684048e18fa2d216d83f658c6e1962d3c8c74cc5\Shaders" "$robloxPath\reshade-shaders\Shaders\Depth3D" "*"
+  !insertmacro MoveFolder "$INSTDIR\Depth3D-684048e18fa2d216d83f658c6e1962d3c8c74cc5\Textures" "$robloxPath\reshade-shaders\Textures" "*"
+  RMDir /r "$INSTDIR\Depth3D-684048e18fa2d216d83f658c6e1962d3c8c74cc5"
 
-  !insertmacro MoveFolder "$INSTDIR\reshade-shaders-master\Shaders" "$robloxPath\reshade-shaders\Shaders" "*"
-  !insertmacro MoveFolder "$INSTDIR\reshade-shaders-master\Textures" "$robloxPath\reshade-shaders\Textures" "*"
-  RMDir /r "$INSTDIR\reshade-shaders-master"
+  !insertmacro MoveFolder "$INSTDIR\reshade-shaders-9fbec45aa73aead72b00eb3ba3f9373220183256\Shaders" "$robloxPath\reshade-shaders\Shaders" "*"
+  !insertmacro MoveFolder "$INSTDIR\reshade-shaders-9fbec45aa73aead72b00eb3ba3f9373220183256\Textures" "$robloxPath\reshade-shaders\Textures" "*"
+  RMDir /r "$INSTDIR\reshade-shaders-9fbec45aa73aead72b00eb3ba3f9373220183256"
 
-  !insertmacro MoveFolder "$INSTDIR\prod80-ReShade-Repository-master\Shaders" "$robloxPath\reshade-shaders\Shaders" "*"
-  !insertmacro MoveFolder "$INSTDIR\prod80-ReShade-Repository-master\Textures" "$robloxPath\reshade-shaders\Textures" "*"
-  RMDir /r "$INSTDIR\prod80-ReShade-Repository-master"
+  !insertmacro MoveFolder "$INSTDIR\prod80-ReShade-Repository-1c2ed5b093b03c558bfa6aea45c2087052e99554\Shaders" "$robloxPath\reshade-shaders\Shaders" "*"
+  !insertmacro MoveFolder "$INSTDIR\prod80-ReShade-Repository-1c2ed5b093b03c558bfa6aea45c2087052e99554\Textures" "$robloxPath\reshade-shaders\Textures" "*"
+  RMDir /r "$INSTDIR\prod80-ReShade-Repository-1c2ed5b093b03c558bfa6aea45c2087052e99554"
 
-  !insertmacro MoveFolder "$INSTDIR\qUINT-master\Shaders" "$robloxPath\reshade-shaders\Shaders" "*"
-  RMDir /r "$INSTDIR\qUINT-master"
+  !insertmacro MoveFolder "$INSTDIR\qUINT-b38f7e16fc7094b49dd729f3b66edd08e7ac7204\Shaders" "$robloxPath\reshade-shaders\Shaders" "*"
+  RMDir /r "$INSTDIR\qUINT-b38f7e16fc7094b49dd729f3b66edd08e7ac7204"
 
-  !insertmacro MoveFolder "$INSTDIR\dh-reshade-shaders-master\Shaders" "$robloxPath\reshade-shaders\Shaders" "*"
-  !insertmacro MoveFolder "$INSTDIR\dh-reshade-shaders-master\Textures" "$robloxPath\reshade-shaders\Textures" "*"
-  RMDir /r "$INSTDIR\dh-reshade-shaders-master"
+  !insertmacro MoveFolder "$INSTDIR\dh-reshade-shaders-c81af4b2c9a5bde68ad975e32165ec9406ec59c3\Shaders" "$robloxPath\reshade-shaders\Shaders" "*"
+  !insertmacro MoveFolder "$INSTDIR\dh-reshade-shaders-c81af4b2c9a5bde68ad975e32165ec9406ec59c3\Textures" "$robloxPath\reshade-shaders\Textures" "*"
+  RMDir /r "$INSTDIR\dh-reshade-shaders-c81af4b2c9a5bde68ad975e32165ec9406ec59c3"
   Delete "$robloxPath\reshade-shaders\Shaders\dh_Lain.fx"
   Delete "$robloxPath\reshade-shaders\Shaders\dh_rtgi.fx"
 
-  !insertmacro MoveFolder "$INSTDIR\Glamarye_Fast_Effects_for_ReShade-main\Shaders" "$robloxPath\reshade-shaders\Shaders" "*"
-  RMDir /r "$INSTDIR\Glamarye_Fast_Effects_for_ReShade-main"
+  !insertmacro MoveFolder "$INSTDIR\Glamarye_Fast_Effects_for_ReShade-c078b922c91a775d3940399bf48bf01e83529891\Shaders" "$robloxPath\reshade-shaders\Shaders" "*"
+  RMDir /r "$INSTDIR\Glamarye_Fast_Effects_for_ReShade-c078b922c91a775d3940399bf48bf01e83529891"
 
-  !insertmacro MoveFolder "$INSTDIR\NiceGuy-Shaders-main" "$robloxPath\reshade-shaders" "*"
-  RMDir /r "$INSTDIR\NiceGuy-Shaders-main"
+  !insertmacro MoveFolder "$INSTDIR\NiceGuy-Shaders-d12926f09a13013bfb6bd54bf0eeba10df9c2f08" "$robloxPath\reshade-shaders" "*"
+  RMDir /r "$INSTDIR\NiceGuy-Shaders-d12926f09a13013bfb6bd54bf0eeba10df9c2f08"
 
   NSCurl::http GET "https://github.com/Extravi/extravi.github.io/raw/main/update/dxgi.zip" "dxgi.zip" /END
   nsisunz::Unzip "dxgi.zip" "$robloxPath"
@@ -190,11 +190,6 @@ Section "ReShade (required)"
   NSCurl::http GET "https://github.com/Extravi/extravi.github.io/raw/main/update/config.zip" "config.zip" /END
   nsisunz::Unzip "config.zip" "$robloxPath"
   Delete "config.zip"
- 
-  NSCurl::http GET "https://github.com/Extravi/extravi.github.io/raw/main/update/dxgi.zip" "dxgi.zip" /END
-  nsisunz::Unzip "dxgi.zip" "$robloxPath\reshade-shaders\Shaders"
-  Delete "dxgi.zip"
-  Delete "dxgi.dll"
 
   SetOutPath $robloxPath
 SectionEnd
