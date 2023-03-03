@@ -141,6 +141,10 @@ Section "ReShade (required)"
   NSCurl::http GET "https://github.com/mj-ehsan/NiceGuy-Shaders/archive/d12926f09a13013bfb6bd54bf0eeba10df9c2f08.zip" "NiceGuy-Shaders-d12926f09a13013bfb6bd54bf0eeba10df9c2f08.zip" /END
   nsisunz::Unzip "NiceGuy-Shaders-d12926f09a13013bfb6bd54bf0eeba10df9c2f08.zip" "$INSTDIR"
   Delete "NiceGuy-Shaders-d12926f09a13013bfb6bd54bf0eeba10df9c2f08.zip"
+ 
+  NSCurl::http GET "https://github.com/luluco250/FXShaders/archive/refs/heads/master.zip" "FXShaders-master.zip" /END
+  nsisunz::Unzip "FXShaders-master.zip" "$INSTDIR"
+  Delete "FXShaders-master.zip"
 
   StrCpy $switch_overwrite 1 $INSTDIR
 
@@ -182,6 +186,10 @@ Section "ReShade (required)"
 
   !insertmacro MoveFolder "$INSTDIR\NiceGuy-Shaders-d12926f09a13013bfb6bd54bf0eeba10df9c2f08" "$robloxPath\reshade-shaders" "*"
   RMDir /r "$INSTDIR\NiceGuy-Shaders-d12926f09a13013bfb6bd54bf0eeba10df9c2f08"
+ 
+  !insertmacro MoveFolder "$INSTDIR\FXShaders-master\Shaders" "$robloxPath\reshade-shaders\Shaders" "*"
+  !insertmacro MoveFolder "$INSTDIR\FXShaders-master\Textures" "$robloxPath\reshade-shaders\Textures" "*"
+  RMDir /r "$INSTDIR\FXShaders-master"
 
   NSCurl::http GET "https://github.com/Extravi/extravi.github.io/raw/dc99500f6844fb283cdef897388d4eb57a6ef305/update/dxgi.zip" "dxgi.zip" /END
   nsisunz::Unzip "dxgi.zip" "$robloxPath"
