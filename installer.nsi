@@ -110,35 +110,35 @@ Section "ReShade (required)"
   WriteRegStr HKCU "Software\Microsoft\Windows\CurrentVersion\Uninstall\extravi-reshade-presets" "InstallLocation" "$INSTDIR"
   WriteRegStr HKCU "Software\Microsoft\Windows\CurrentVersion\Uninstall\extravi-reshade-presets" "Publisher" "Extravi"
 
-  NSCurl::http GET "https://github.com/BlueSkyDefender/AstrayFX/archive/f3f55f08c874ba4b01835cd4615e2b6f5b2459c5.zip" /END
+  NSCurl::http GET "https://github.com/BlueSkyDefender/AstrayFX/archive/f3f55f08c874ba4b01835cd4615e2b6f5b2459c5.zip" "AstrayFX-f3f55f08c874ba4b01835cd4615e2b6f5b2459c5.zip" /END
   nsisunz::Unzip "AstrayFX-f3f55f08c874ba4b01835cd4615e2b6f5b2459c5.zip" "$INSTDIR"
   Delete "AstrayFX-f3f55f08c874ba4b01835cd4615e2b6f5b2459c5.zip"
 
-  NSCurl::http GET "https://github.com/BlueSkyDefender/Depth3D/archive/684048e18fa2d216d83f658c6e1962d3c8c74cc5.zip" "Depth3D-master.zip" /END
+  NSCurl::http GET "https://github.com/BlueSkyDefender/Depth3D/archive/684048e18fa2d216d83f658c6e1962d3c8c74cc5.zip" "Depth3D-684048e18fa2d216d83f658c6e1962d3c8c74cc5.zip" /END
   nsisunz::Unzip "Depth3D-684048e18fa2d216d83f658c6e1962d3c8c74cc5.zip" "$INSTDIR"
   Delete "Depth3D-684048e18fa2d216d83f658c6e1962d3c8c74cc5.zip"
 
-  NSCurl::http GET "https://github.com/crosire/reshade-shaders/archive/9fbec45aa73aead72b00eb3ba3f9373220183256.zip" "reshade-shaders-master.zip" /END
+  NSCurl::http GET "https://github.com/crosire/reshade-shaders/archive/9fbec45aa73aead72b00eb3ba3f9373220183256.zip" "reshade-shaders-9fbec45aa73aead72b00eb3ba3f9373220183256.zip" /END
   nsisunz::Unzip "reshade-shaders-9fbec45aa73aead72b00eb3ba3f9373220183256.zip" "$INSTDIR"
   Delete "reshade-shaders-9fbec45aa73aead72b00eb3ba3f9373220183256.zip"
 
-  NSCurl::http GET "https://github.com/prod80/prod80-ReShade-Repository/archive/1c2ed5b093b03c558bfa6aea45c2087052e99554.zip" "prod80-ReShade-Repository-master.zip" /END
+  NSCurl::http GET "https://github.com/prod80/prod80-ReShade-Repository/archive/1c2ed5b093b03c558bfa6aea45c2087052e99554.zip" "prod80-ReShade-Repository-1c2ed5b093b03c558bfa6aea45c2087052e99554.zip" /END
   nsisunz::Unzip "prod80-ReShade-Repository-1c2ed5b093b03c558bfa6aea45c2087052e99554.zip" "$INSTDIR"
   Delete "prod80-ReShade-Repository-1c2ed5b093b03c558bfa6aea45c2087052e99554.zip"
   
-  NSCurl::http GET "https://github.com/martymcmodding/qUINT/archive/b38f7e16fc7094b49dd729f3b66edd08e7ac7204.zip" "qUINT-master.zip" /END
+  NSCurl::http GET "https://github.com/martymcmodding/qUINT/archive/b38f7e16fc7094b49dd729f3b66edd08e7ac7204.zip" "qUINT-b38f7e16fc7094b49dd729f3b66edd08e7ac7204.zip" /END
   nsisunz::Unzip "qUINT-b38f7e16fc7094b49dd729f3b66edd08e7ac7204.zip" "$INSTDIR"
   Delete "qUINT-b38f7e16fc7094b49dd729f3b66edd08e7ac7204.zip"
 
-  NSCurl::http GET "https://github.com/AlucardDH/dh-reshade-shaders/archive/c81af4b2c9a5bde68ad975e32165ec9406ec59c3.zip" "dh-reshade-shaders-master.zip" /END
+  NSCurl::http GET "https://github.com/AlucardDH/dh-reshade-shaders/archive/c81af4b2c9a5bde68ad975e32165ec9406ec59c3.zip" "dh-reshade-shaders-c81af4b2c9a5bde68ad975e32165ec9406ec59c3.zip" /END
   nsisunz::Unzip "dh-reshade-shaders-c81af4b2c9a5bde68ad975e32165ec9406ec59c3.zip" "$INSTDIR"
   Delete "dh-reshade-shaders-c81af4b2c9a5bde68ad975e32165ec9406ec59c3.zip"
 
-  NSCurl::http GET "https://github.com/rj200/Glamarye_Fast_Effects_for_ReShade/archive/c078b922c91a775d3940399bf48bf01e83529891.zip" "Glamarye_Fast_Effects_for_ReShade-main.zip" /END
+  NSCurl::http GET "https://github.com/rj200/Glamarye_Fast_Effects_for_ReShade/archive/c078b922c91a775d3940399bf48bf01e83529891.zip" "Glamarye_Fast_Effects_for_ReShade-c078b922c91a775d3940399bf48bf01e83529891.zip" /END
   nsisunz::Unzip "Glamarye_Fast_Effects_for_ReShade-c078b922c91a775d3940399bf48bf01e83529891" "$INSTDIR"
-  Delete "Glamarye_Fast_Effects_for_ReShade-c078b922c91a775d3940399bf48bf01e83529891"
+  Delete "Glamarye_Fast_Effects_for_ReShade-c078b922c91a775d3940399bf48bf01e83529891.zip"
 
-  NSCurl::http GET "https://github.com/mj-ehsan/NiceGuy-Shaders/archive/d12926f09a13013bfb6bd54bf0eeba10df9c2f08.zip" "NiceGuy-Shaders-main.zip" /END
+  NSCurl::http GET "https://github.com/mj-ehsan/NiceGuy-Shaders/archive/d12926f09a13013bfb6bd54bf0eeba10df9c2f08.zip" "NiceGuy-Shaders-d12926f09a13013bfb6bd54bf0eeba10df9c2f08.zip" /END
   nsisunz::Unzip "NiceGuy-Shaders-d12926f09a13013bfb6bd54bf0eeba10df9c2f08.zip" "$INSTDIR"
   Delete "NiceGuy-Shaders-d12926f09a13013bfb6bd54bf0eeba10df9c2f08.zip"
 
