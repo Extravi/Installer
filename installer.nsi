@@ -16,8 +16,8 @@ Var /GLOBAL switch_overwrite
 
 !define PRODUCT_NAME "Extravi's ReShade-Preset"
 !define PRODUCT_DESCRIPTION "ReShade presets made by Extravi."
-!define COPYRIGHT "Copyright © 2022 sitiom, Extravi"
-!define VERSION "4.3.1"
+!define COPYRIGHT "Copyright © 2023 sitiom, Extravi"
+!define VERSION "7.0.0"
 
 VIProductVersion "${VERSION}.0"
 VIAddVersionKey "ProductName" "${PRODUCT_NAME}"
@@ -92,6 +92,8 @@ Click Finish to exit Setup."
 
 Var robloxPath
 
+SpaceTexts none
+
 Section "ReShade (required)"
   SectionIn 1 RO
 
@@ -110,37 +112,49 @@ Section "ReShade (required)"
   WriteRegStr HKCU "Software\Microsoft\Windows\CurrentVersion\Uninstall\extravi-reshade-presets" "InstallLocation" "$INSTDIR"
   WriteRegStr HKCU "Software\Microsoft\Windows\CurrentVersion\Uninstall\extravi-reshade-presets" "Publisher" "Extravi"
 
-  NSCurl::http GET "https://github.com/BlueSkyDefender/AstrayFX/archive/f3f55f08c874ba4b01835cd4615e2b6f5b2459c5.zip" "AstrayFX-f3f55f08c874ba4b01835cd4615e2b6f5b2459c5.zip" /END
-  nsisunz::Unzip "AstrayFX-f3f55f08c874ba4b01835cd4615e2b6f5b2459c5.zip" "$INSTDIR"
-  Delete "AstrayFX-f3f55f08c874ba4b01835cd4615e2b6f5b2459c5.zip"
+  NSCurl::http GET "https://github.com/BlueSkyDefender/AstrayFX/archive/refs/heads/master.zip" "AstrayFX-master.zip" /END
+  nsisunz::Unzip "AstrayFX-master.zip" "$INSTDIR"
+  Delete "AstrayFX-master.zip"
 
-  NSCurl::http GET "https://github.com/BlueSkyDefender/Depth3D/archive/684048e18fa2d216d83f658c6e1962d3c8c74cc5.zip" "Depth3D-684048e18fa2d216d83f658c6e1962d3c8c74cc5.zip" /END
-  nsisunz::Unzip "Depth3D-684048e18fa2d216d83f658c6e1962d3c8c74cc5.zip" "$INSTDIR"
-  Delete "Depth3D-684048e18fa2d216d83f658c6e1962d3c8c74cc5.zip"
+  NSCurl::http GET "https://github.com/BlueSkyDefender/Depth3D/archive/refs/heads/master.zip" "Depth3D-master.zip" /END
+  nsisunz::Unzip "Depth3D-master.zip" "$INSTDIR"
+  Delete "Depth3D-master.zip"
 
-  NSCurl::http GET "https://github.com/crosire/reshade-shaders/archive/9fbec45aa73aead72b00eb3ba3f9373220183256.zip" "reshade-shaders-9fbec45aa73aead72b00eb3ba3f9373220183256.zip" /END
-  nsisunz::Unzip "reshade-shaders-9fbec45aa73aead72b00eb3ba3f9373220183256.zip" "$INSTDIR"
-  Delete "reshade-shaders-9fbec45aa73aead72b00eb3ba3f9373220183256.zip"
+  NSCurl::http GET "https://github.com/crosire/reshade-shaders/archive/refs/heads/legacy.zip" "reshade-shaders-legacy.zip" /END
+  nsisunz::Unzip "reshade-shaders-legacy.zip" "$INSTDIR"
+  Delete "reshade-shaders-legacy.zip"
 
-  NSCurl::http GET "https://github.com/prod80/prod80-ReShade-Repository/archive/1c2ed5b093b03c558bfa6aea45c2087052e99554.zip" "prod80-ReShade-Repository-1c2ed5b093b03c558bfa6aea45c2087052e99554.zip" /END
-  nsisunz::Unzip "prod80-ReShade-Repository-1c2ed5b093b03c558bfa6aea45c2087052e99554.zip" "$INSTDIR"
-  Delete "prod80-ReShade-Repository-1c2ed5b093b03c558bfa6aea45c2087052e99554.zip"
+  NSCurl::http GET "https://github.com/crosire/reshade-shaders/archive/refs/heads/master.zip" "reshade-shaders-master.zip" /END
+  nsisunz::Unzip "reshade-shaders-master.zip" "$INSTDIR"
+  Delete "reshade-shaders-master.zip"
+
+  NSCurl::http GET "https://github.com/prod80/prod80-ReShade-Repository/archive/refs/heads/master.zip" "prod80-ReShade-Repository-master.zip" /END
+  nsisunz::Unzip "prod80-ReShade-Repository-master.zip" "$INSTDIR"
+  Delete "prod80-ReShade-Repository-master.zip"
   
-  NSCurl::http GET "https://github.com/martymcmodding/qUINT/archive/b38f7e16fc7094b49dd729f3b66edd08e7ac7204.zip" "qUINT-b38f7e16fc7094b49dd729f3b66edd08e7ac7204.zip" /END
-  nsisunz::Unzip "qUINT-b38f7e16fc7094b49dd729f3b66edd08e7ac7204.zip" "$INSTDIR"
-  Delete "qUINT-b38f7e16fc7094b49dd729f3b66edd08e7ac7204.zip"
+  NSCurl::http GET "https://github.com/martymcmodding/qUINT/archive/refs/heads/master.zip" "qUINT-master.zip" /END
+  nsisunz::Unzip "qUINT-master.zip" "$INSTDIR"
+  Delete "qUINT-master.zip"
 
-  NSCurl::http GET "https://github.com/AlucardDH/dh-reshade-shaders/archive/c81af4b2c9a5bde68ad975e32165ec9406ec59c3.zip" "dh-reshade-shaders-c81af4b2c9a5bde68ad975e32165ec9406ec59c3.zip" /END
-  nsisunz::Unzip "dh-reshade-shaders-c81af4b2c9a5bde68ad975e32165ec9406ec59c3.zip" "$INSTDIR"
-  Delete "dh-reshade-shaders-c81af4b2c9a5bde68ad975e32165ec9406ec59c3.zip"
+  NSCurl::http GET "https://github.com/AlucardDH/dh-reshade-shaders/archive/refs/heads/master.zip" "dh-reshade-shaders-master.zip" /END
+  nsisunz::Unzip "dh-reshade-shaders-master.zip" "$INSTDIR"
+  Delete "dh-reshade-shaders-master.zip"
 
-  NSCurl::http GET "https://github.com/rj200/Glamarye_Fast_Effects_for_ReShade/archive/c078b922c91a775d3940399bf48bf01e83529891.zip" "Glamarye_Fast_Effects_for_ReShade-c078b922c91a775d3940399bf48bf01e83529891.zip" /END
-  nsisunz::Unzip "Glamarye_Fast_Effects_for_ReShade-c078b922c91a775d3940399bf48bf01e83529891" "$INSTDIR"
-  Delete "Glamarye_Fast_Effects_for_ReShade-c078b922c91a775d3940399bf48bf01e83529891.zip"
+  NSCurl::http GET "https://github.com/rj200/Glamarye_Fast_Effects_for_ReShade/archive/refs/heads/main.zip" "Glamarye_Fast_Effects_for_ReShade-main.zip" /END
+  nsisunz::Unzip "Glamarye_Fast_Effects_for_ReShade-main.zip" "$INSTDIR"
+  Delete "Glamarye_Fast_Effects_for_ReShade-main.zip"
 
-  NSCurl::http GET "https://github.com/mj-ehsan/NiceGuy-Shaders/archive/d12926f09a13013bfb6bd54bf0eeba10df9c2f08.zip" "NiceGuy-Shaders-d12926f09a13013bfb6bd54bf0eeba10df9c2f08.zip" /END
-  nsisunz::Unzip "NiceGuy-Shaders-d12926f09a13013bfb6bd54bf0eeba10df9c2f08.zip" "$INSTDIR"
-  Delete "NiceGuy-Shaders-d12926f09a13013bfb6bd54bf0eeba10df9c2f08.zip"
+  NSCurl::http GET "https://github.com/mj-ehsan/NiceGuy-Shaders/archive/refs/heads/main.zip" "NiceGuy-Shaders-main.zip" /END
+  nsisunz::Unzip "NiceGuy-Shaders-main.zip" "$INSTDIR"
+  Delete "NiceGuy-Shaders-main.zip"
+
+  NSCurl::http GET "https://github.com/CeeJayDK/SweetFX/archive/refs/heads/master.zip" "SweetFX-master.zip" /END
+  nsisunz::Unzip "SweetFX-master.zip" "$INSTDIR"
+  Delete "SweetFX-master.zip"
+
+  NSCurl::http GET "https://github.com/brussell1/Shaders/archive/refs/heads/master.zip" "Shaders-master.zip" /END
+  nsisunz::Unzip "Shaders-master.zip" "$INSTDIR"
+  Delete "Shaders-master.zip"
 
   StrCpy $switch_overwrite 1 $INSTDIR
 
@@ -151,45 +165,56 @@ Section "ReShade (required)"
   Delete "$robloxPath\dxgi.dll"
   Delete "$robloxPath\reshade.dll"
 
-  !insertmacro MoveFolder "$INSTDIR\AstrayFX-f3f55f08c874ba4b01835cd4615e2b6f5b2459c5\Shaders" "$robloxPath\reshade-shaders\Shaders\AstrayFX" "*"
-  !insertmacro MoveFolder "$INSTDIR\AstrayFX-f3f55f08c874ba4b01835cd4615e2b6f5b2459c5\Textures" "$robloxPath\reshade-shaders\Textures" "*"
-  RMDir /r "$INSTDIR\AstrayFX-f3f55f08c874ba4b01835cd4615e2b6f5b2459c5"
-  Delete "$robloxPath\reshade-shaders\Shaders\AstrayFX\Clarity.fx"
+  !insertmacro MoveFolder "$INSTDIR\AstrayFX-master\Shaders" "$robloxPath\reshade-shaders\Shaders\AstrayFX" "*"
+  !insertmacro MoveFolder "$INSTDIR\AstrayFX-master\Textures" "$robloxPath\reshade-shaders\Textures" "*"
+  RMDir /r "$INSTDIR\AstrayFX-master"
 
-  !insertmacro MoveFolder "$INSTDIR\Depth3D-684048e18fa2d216d83f658c6e1962d3c8c74cc5\Shaders" "$robloxPath\reshade-shaders\Shaders\Depth3D" "*"
-  !insertmacro MoveFolder "$INSTDIR\Depth3D-684048e18fa2d216d83f658c6e1962d3c8c74cc5\Textures" "$robloxPath\reshade-shaders\Textures" "*"
-  RMDir /r "$INSTDIR\Depth3D-684048e18fa2d216d83f658c6e1962d3c8c74cc5"
+  !insertmacro MoveFolder "$INSTDIR\Depth3D-master\Shaders" "$robloxPath\reshade-shaders\Shaders\Depth3D" "*"
+  !insertmacro MoveFolder "$INSTDIR\Depth3D-master\Textures" "$robloxPath\reshade-shaders\Textures" "*"
+  RMDir /r "$INSTDIR\Depth3D-master"
 
-  !insertmacro MoveFolder "$INSTDIR\reshade-shaders-9fbec45aa73aead72b00eb3ba3f9373220183256\Shaders" "$robloxPath\reshade-shaders\Shaders" "*"
-  !insertmacro MoveFolder "$INSTDIR\reshade-shaders-9fbec45aa73aead72b00eb3ba3f9373220183256\Textures" "$robloxPath\reshade-shaders\Textures" "*"
-  RMDir /r "$INSTDIR\reshade-shaders-9fbec45aa73aead72b00eb3ba3f9373220183256"
+  !insertmacro MoveFolder "$INSTDIR\reshade-shaders-legacy\Shaders" "$robloxPath\reshade-shaders\Shaders" "*"
+  !insertmacro MoveFolder "$INSTDIR\reshade-shaders-legacy\Textures" "$robloxPath\reshade-shaders\Textures" "*"
+  RMDir /r "$INSTDIR\reshade-shaders-legacy"
 
-  !insertmacro MoveFolder "$INSTDIR\prod80-ReShade-Repository-1c2ed5b093b03c558bfa6aea45c2087052e99554\Shaders" "$robloxPath\reshade-shaders\Shaders" "*"
-  !insertmacro MoveFolder "$INSTDIR\prod80-ReShade-Repository-1c2ed5b093b03c558bfa6aea45c2087052e99554\Textures" "$robloxPath\reshade-shaders\Textures" "*"
-  RMDir /r "$INSTDIR\prod80-ReShade-Repository-1c2ed5b093b03c558bfa6aea45c2087052e99554"
+  !insertmacro MoveFolder "$INSTDIR\prod80-ReShade-Repository-master\Shaders" "$robloxPath\reshade-shaders\Shaders" "*"
+  !insertmacro MoveFolder "$INSTDIR\prod80-ReShade-Repository-master\Textures" "$robloxPath\reshade-shaders\Textures" "*"
+  RMDir /r "$INSTDIR\prod80-ReShade-Repository-master"
 
-  !insertmacro MoveFolder "$INSTDIR\qUINT-b38f7e16fc7094b49dd729f3b66edd08e7ac7204\Shaders" "$robloxPath\reshade-shaders\Shaders" "*"
-  RMDir /r "$INSTDIR\qUINT-b38f7e16fc7094b49dd729f3b66edd08e7ac7204"
+  !insertmacro MoveFolder "$INSTDIR\qUINT-master\Shaders" "$robloxPath\reshade-shaders\Shaders" "*"
+  RMDir /r "$INSTDIR\qUINT-master"
 
-  !insertmacro MoveFolder "$INSTDIR\dh-reshade-shaders-c81af4b2c9a5bde68ad975e32165ec9406ec59c3\Shaders" "$robloxPath\reshade-shaders\Shaders" "*"
-  !insertmacro MoveFolder "$INSTDIR\dh-reshade-shaders-c81af4b2c9a5bde68ad975e32165ec9406ec59c3\Textures" "$robloxPath\reshade-shaders\Textures" "*"
-  RMDir /r "$INSTDIR\dh-reshade-shaders-c81af4b2c9a5bde68ad975e32165ec9406ec59c3"
+  !insertmacro MoveFolder "$INSTDIR\dh-reshade-shaders-master\Shaders" "$robloxPath\reshade-shaders\Shaders" "*"
+  !insertmacro MoveFolder "$INSTDIR\dh-reshade-shaders-master\Textures" "$robloxPath\reshade-shaders\Textures" "*"
+  RMDir /r "$INSTDIR\dh-reshade-shaders-master"
   Delete "$robloxPath\reshade-shaders\Shaders\dh_Lain.fx"
   Delete "$robloxPath\reshade-shaders\Shaders\dh_rtgi.fx"
 
-  !insertmacro MoveFolder "$INSTDIR\Glamarye_Fast_Effects_for_ReShade-c078b922c91a775d3940399bf48bf01e83529891\Shaders" "$robloxPath\reshade-shaders\Shaders" "*"
-  RMDir /r "$INSTDIR\Glamarye_Fast_Effects_for_ReShade-c078b922c91a775d3940399bf48bf01e83529891"
+  !insertmacro MoveFolder "$INSTDIR\Glamarye_Fast_Effects_for_ReShade-main\Shaders" "$robloxPath\reshade-shaders\Shaders" "*"
+  RMDir /r "$INSTDIR\Glamarye_Fast_Effects_for_ReShade-main"
 
-  !insertmacro MoveFolder "$INSTDIR\NiceGuy-Shaders-d12926f09a13013bfb6bd54bf0eeba10df9c2f08" "$robloxPath\reshade-shaders" "*"
-  RMDir /r "$INSTDIR\NiceGuy-Shaders-d12926f09a13013bfb6bd54bf0eeba10df9c2f08"
+  !insertmacro MoveFolder "$INSTDIR\NiceGuy-Shaders-main" "$robloxPath\reshade-shaders" "*"
+  RMDir /r "$INSTDIR\NiceGuy-Shaders-main"
 
-  NSCurl::http GET "https://github.com/Extravi/extravi.github.io/raw/dc99500f6844fb283cdef897388d4eb57a6ef305/update/dxgi.zip" "dxgi.zip" /END
+  !insertmacro MoveFolder "$INSTDIR\SweetFX-master" "$robloxPath\reshade-shaders" "*"
+  RMDir /r "$INSTDIR\SweetFX-master"
+
+  !insertmacro MoveFolder "$INSTDIR\Shaders-master" "$robloxPath\reshade-shaders" "*"
+  RMDir /r "$INSTDIR\Shaders-master"
+
+  NSCurl::http GET "https://github.com/Extravi/extravi.github.io/raw/main/update/dxgi.zip" "dxgi.zip" /END
   nsisunz::Unzip "dxgi.zip" "$robloxPath"
   Delete "dxgi.zip"
 
   NSCurl::http GET "https://github.com/Extravi/extravi.github.io/raw/main/update/config.zip" "config.zip" /END
   nsisunz::Unzip "config.zip" "$robloxPath"
   Delete "config.zip"
+
+  NSCurl::http GET "https://github.com/Extravi/extravi.github.io/raw/main/update/dependencies.zip" "dependencies.zip" /END
+  nsisunz::Unzip "dependencies.zip" "$robloxPath\reshade-shaders\Shaders"
+  Delete "dependencies.zip"
+
+  NSCurl::http GET "https://raw.githubusercontent.com/cyrie/Stormshade/master/reshade-shaders/Shaders/MXAO.fx" "$robloxPath\reshade-shaders\Shaders\MXAO.fx" /END
 
   SetOutPath $robloxPath
 SectionEnd
